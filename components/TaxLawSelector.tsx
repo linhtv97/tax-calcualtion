@@ -1,5 +1,7 @@
-import { TaxLawId } from '../types';
-import { TAX_LAWS } from '../lib/taxLaws';
+'use client';
+
+import { TaxLawId } from '@/types';
+import { TAX_LAWS } from '@/lib/taxLaws';
 
 interface TaxLawSelectorProps {
   value: TaxLawId;

@@ -1,4 +1,4 @@
-import { TaxLaw, RegionalWage, RegionId } from '../types';
+import { TaxLaw, RegionalWage, RegionId } from '@/types';
 
 // ============================================
 // TAX LAWS CONFIGURATION

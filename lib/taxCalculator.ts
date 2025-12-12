@@ -3,7 +3,7 @@ import {
   CalculationResult,
   TaxBracket,
   TaxBreakdownItem,
-} from '../types';
+} from '@/types';
 import { getTaxLaw } from './taxLaws';
 import { REGIONAL_MINIMUM_WAGE } from './taxLaws';
 

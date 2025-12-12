@@ -1,18 +1,20 @@
-import { useState, useEffect } from 'react';
-import { CalculationInput, TaxLawId, InsuranceOption, CalculationMode, RegionId } from './types';
-import { calculate } from './lib/taxCalculator';
-import { DEFAULT_VALUES } from './lib/constants';
-import { TaxLawSelector } from './components/TaxLawSelector';
-import { CalculationModeToggle } from './components/CalculationModeToggle';
-import { SalaryInput } from './components/SalaryInput';
-import { DependentsInput } from './components/DependentsInput';
-import { InsuranceOptions } from './components/InsuranceOptions';
-import { ResultCard } from './components/ResultCard';
-import { TaxBracketTable } from './components/TaxBracketTable';
-import { Calculator, Copy, Check } from 'lucide-react';
-import { formatCurrency } from './lib/formatters';
+'use client';
 
-function App() {
+import { useState, useEffect } from 'react';
+import { CalculationInput, TaxLawId, InsuranceOption, CalculationMode, RegionId } from '@/types';
+import { calculate } from '@/lib/taxCalculator';
+import { DEFAULT_VALUES } from '@/lib/constants';
+import { TaxLawSelector } from '@/components/TaxLawSelector';
+import { CalculationModeToggle } from '@/components/CalculationModeToggle';
+import { SalaryInput } from '@/components/SalaryInput';
+import { DependentsInput } from '@/components/DependentsInput';
+import { InsuranceOptions } from '@/components/InsuranceOptions';
+import { ResultCard } from '@/components/ResultCard';
+import { TaxBracketTable } from '@/components/TaxBracketTable';
+import { Calculator, Copy, Check } from 'lucide-react';
+import { formatCurrency } from '@/lib/formatters';
+
+export default function Home() {
   const [taxLawId, setTaxLawId] = useState<TaxLawId>(DEFAULT_VALUES.taxLawId);
   const [mode, setMode] = useState<CalculationMode>(DEFAULT_VALUES.mode);
   const [salary, setSalary] = useState<number>(DEFAULT_VALUES.salary);
@@ -195,6 +197,4 @@ Thu nhập tính thuế: ${formatCurrency(result.taxableIncome)}
     </div>
   );
 }
-
-export default App;
 

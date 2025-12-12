@@ -1,5 +1,7 @@
-import { formatNumber, parseCurrency } from '../lib/formatters';
-import { CalculationMode } from '../types';
+'use client';
+
+import { formatNumber, parseCurrency } from '@/lib/formatters';
+import { CalculationMode } from '@/types';
 
 interface SalaryInputProps {
   value: number;

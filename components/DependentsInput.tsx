@@ -1,6 +1,8 @@
+'use client';
+
 import { Minus, Plus } from 'lucide-react';
 import { Tooltip } from './Tooltip';
-import { EXPLANATIONS } from '../lib/constants';
+import { EXPLANATIONS } from '@/lib/constants';
 
 interface DependentsInputProps {
   value: number;

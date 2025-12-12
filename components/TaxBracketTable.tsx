@@ -1,6 +1,8 @@
-import { TaxLawId } from '../types';
-import { getTaxLaw } from '../lib/taxLaws';
-import { formatCurrency, formatPercentage } from '../lib/formatters';
+'use client';
+
+import { TaxLawId } from '@/types';
+import { getTaxLaw } from '@/lib/taxLaws';
+import { formatCurrency, formatPercentage } from '@/lib/formatters';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
@@ -53,7 +55,7 @@ export function TaxBracketTable({ taxLawId, taxableIncome }: TaxBracketTableProp
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {law.taxBrackets.map((bracket, index) => {
-                  const isActive = isActiveBracket(bracket.from, bracket.to);
+                  const isActive = isActiveBracket(bracket.from);
                   return (
                     <tr 
                       key={index} 

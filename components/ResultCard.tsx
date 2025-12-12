@@ -1,7 +1,9 @@
-import { CalculationResult } from '../types';
-import { formatCurrency, formatPercentage } from '../lib/formatters';
+'use client';
+
+import { CalculationResult } from '@/types';
+import { formatCurrency, formatPercentage } from '@/lib/formatters';
 import { Tooltip } from './Tooltip';
-import { EXPLANATIONS } from '../lib/constants';
+import { EXPLANATIONS } from '@/lib/constants';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { useState } from 'react';
 
