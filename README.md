@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🇻🇳 Tính Thuế Thu Nhập Cá Nhân Việt Nam
 
-## Getting Started
+Công cụ tính thuế TNCN miễn phí, hỗ trợ chuyển đổi 2 chiều Gross ⇄ Net.
 
-First, run the development server:
+## ✨ Tính năng
+
+- ✅ **Chuyển đổi 2 chiều**: Gross → Net hoặc Net → Gross
+- ✅ **Hỗ trợ 2 phiên bản luật**: Trước 2026 và từ 2026
+- ✅ **Tùy chọn bảo hiểm linh hoạt**: Full, tối thiểu vùng, hoặc tự nhập
+- ✅ **Giải thích chi tiết**: Tooltip cho từng khoản trừ
+- ✅ **Responsive**: Hoạt động tốt trên mobile và desktop
+- ✅ **100% Frontend**: Không lưu trữ dữ liệu, bảo mật tuyệt đối
+- ✅ **Copy kết quả**: Dễ dàng chia sẻ
+
+## 🚀 Cài đặt & Chạy
 
 ```bash
+# Cài đặt dependencies
+npm install
+
+# Chạy dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build production
+npm run build
+
+# Preview production build
+npm run preview
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: React 18 + TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS
+- **Icons**: Lucide React
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📖 Cách sử dụng
 
-## Learn More
+1. **Chọn luật thuế**: Trước 2026 hoặc Từ 2026
+2. **Chọn chế độ tính**: Gross → Net hoặc Net → Gross
+3. **Nhập thông tin**:
+   - Lương (Gross hoặc Net)
+   - Số người phụ thuộc
+   - Tùy chọn đóng bảo hiểm
+4. **Xem kết quả chi tiết** với breakdown từng khoản
 
-To learn more about Next.js, take a look at the following resources:
+## 📋 Các thay đổi thuế 2026
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Giảm trừ gia cảnh tăng:
+- Bản thân: 11 triệu → **15 triệu**
+- Người phụ thuộc: 4.4 triệu → **6.2 triệu**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Biểu thuế đơn giản hóa:
+- Từ 7 bậc → **5 bậc**
+- Thuế suất: 5%, 10%, 20%, 30%, 35%
 
-## Deploy on Vercel
+## ⚠️ Disclaimer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Công cụ này chỉ mang tính chất tham khảo. Vui lòng tham khảo ý kiến chuyên gia thuế hoặc cơ quan thuế để có kết quả chính xác nhất.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+
+MIT License - Feel free to use for personal and commercial projects.
+
+---
+
+Made with ❤️ for Vietnam
