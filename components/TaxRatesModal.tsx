@@ -93,7 +93,7 @@ export function TaxRatesModal({ isOpen, onClose }: TaxRatesModalProps) {
             <div className="mb-4">
               <h4 className="font-semibold text-gray-800 mb-2">Giảm trừ gia cảnh (↑ Tăng)</h4>
               <ul className="list-disc pl-5 space-y-1">
-                <li><strong>Bản thân:</strong> 15,000,000 đ/tháng <span className="text-green-600">(+4 triệu)</span></li>
+                <li><strong>Bản thân:</strong> 15,500,000 đ/tháng <span className="text-green-600">(+4.5 triệu)</span></li>
                 <li><strong>Người phụ thuộc:</strong> 6,200,000 đ/người/tháng <span className="text-green-600">(+1.8 triệu)</span></li>
               </ul>
             </div>

@@ -8,7 +8,7 @@ export const EXPLANATIONS = {
     content: `Đây là khoản giảm trừ thuế cho bản thân người nộp thuế. Phần thu nhập này được miễn thuế.
     
 • Trước 2026: 11 triệu đồng/tháng
-• Từ 2026: 15 triệu đồng/tháng
+• Từ 2026: 15.5 triệu đồng/tháng
 
 Căn cứ pháp lý: Luật Thuế TNCN số 67/2024/QH15`,
   },

@@ -23,7 +23,7 @@
 ## 🟢 Luật Mới (Từ 01/01/2026)
 
 ### Giảm trừ gia cảnh (↑ Tăng)
-- **Bản thân:** 15,000,000 đ/tháng *(+4 triệu)*
+- **Bản thân:** 15,500,000 đ/tháng *(+4.5 triệu)*
 - **Người phụ thuộc:** 6,200,000 đ/người/tháng *(+1.8 triệu)*
 
 ### Biểu thuế lũy tiến (5 bậc - Đơn giản hóa)

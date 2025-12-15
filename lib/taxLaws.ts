@@ -35,7 +35,7 @@ export const TAX_LAWS: Record<string, TaxLaw> = {
     name: 'Luật thuế mới',
     effectiveFrom: '2026-01-01',
     description: 'Áp dụng từ 01/01/2026',
-    personalDeduction: 15_000_000,
+    personalDeduction: 15_500_000,
     dependentDeduction: 6_200_000,
     insurance: {
       socialRate: 0.08,
