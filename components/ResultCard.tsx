@@ -9,9 +9,11 @@ import { useState } from 'react';
 
 interface ResultCardProps {
   result: CalculationResult;
+  mode: 'grossToNet' | 'netToGross';
+  inputSalary: number;
 }
 
-export function ResultCard({ result }: ResultCardProps) {
+export function ResultCard({ result, mode, inputSalary }: ResultCardProps) {
   const [showInsuranceDetail, setShowInsuranceDetail] = useState(false);
   const [showDeductionDetail, setShowDeductionDetail] = useState(false);
   const [showTaxDetail, setShowTaxDetail] = useState(false);
@@ -20,13 +22,24 @@ export function ResultCard({ result }: ResultCardProps) {
     <div className="bg-white rounded-lg border border-gray-200 p-4 space-y-4">
       <h2 className="text-lg font-bold text-gray-900">📊 Kết quả chi tiết</h2>
 
-      {/* Gross Salary */}
-      <div className="space-y-1">
-        <div className="text-xs text-gray-600">💵 Lương Gross</div>
-        <div className="text-xl font-bold text-gray-900">
-          {formatCurrency(result.grossSalary)}
+      {/* Display based on mode */}
+      {mode === 'grossToNet' ? (
+        // Gross → Net: Show Gross input
+        <div className="space-y-1">
+          <div className="text-xs text-gray-600">💵 Lương Gross</div>
+          <div className="text-xl font-bold text-gray-900">
+            {formatCurrency(inputSalary)}
+          </div>
         </div>
-      </div>
+      ) : (
+        // Net → Gross: Show Net input (exact user input, not recalculated)
+        <div className="space-y-1">
+          <div className="text-xs text-gray-600">💰 Lương Net mong muốn</div>
+          <div className="text-xl font-bold text-gray-900">
+            {formatCurrency(inputSalary)}
+          </div>
+        </div>
+      )}
 
       <div className="border-t border-gray-200 pt-3 space-y-3">
         {/* Insurance */}
@@ -238,22 +251,44 @@ export function ResultCard({ result }: ResultCardProps) {
         </div>
       </div>
 
-      {/* Final Net Salary */}
+      {/* Final Result - based on mode */}
       <div className="border-t border-gray-300 pt-3">
         <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg p-4 text-white">
-          <div className="text-xs opacity-90 mb-1">💰 Lương thực lãnh (NET)</div>
-          <div className="text-3xl font-bold mb-1.5">
-            {formatCurrency(result.netSalary)}
-          </div>
-          <div className="flex gap-3 text-xs opacity-90">
-            <span>
-              Thuế: {formatPercentage(result.effectiveTaxRate)}
-            </span>
-            <span>•</span>
-            <span>
-              Thực lãnh: {formatPercentage(result.takeHomePercentage)}
-            </span>
-          </div>
+          {mode === 'grossToNet' ? (
+            // Gross → Net: Show NET result
+            <>
+              <div className="text-xs opacity-90 mb-1">💰 Lương thực lãnh (NET)</div>
+              <div className="text-3xl font-bold mb-1.5">
+                {formatCurrency(result.netSalary)}
+              </div>
+              <div className="flex gap-3 text-xs opacity-90">
+                <span>
+                  Thuế: {formatPercentage(result.effectiveTaxRate)}
+                </span>
+                <span>•</span>
+                <span>
+                  Thực lãnh: {formatPercentage(result.takeHomePercentage)}
+                </span>
+              </div>
+            </>
+          ) : (
+            // Net → Gross: Show GROSS result
+            <>
+              <div className="text-xs opacity-90 mb-1">💵 Lương Gross cần thiết</div>
+              <div className="text-3xl font-bold mb-1.5">
+                {formatCurrency(result.grossSalary)}
+              </div>
+              <div className="flex gap-3 text-xs opacity-90">
+                <span>
+                  Thuế: {formatPercentage(result.effectiveTaxRate)}
+                </span>
+                <span>•</span>
+                <span>
+                  Trên hợp đồng: {formatCurrency(result.grossSalary)}
+                </span>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

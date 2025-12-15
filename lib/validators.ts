@@ -39,8 +39,8 @@ export function validateInsuranceBase(base: number): { valid: boolean; message?:
     return { valid: false, message: 'Mức đóng bảo hiểm không thể âm' };
   }
   
-  if (base > 36_000_000) {
-    return { valid: false, message: 'Vượt quá trần đóng BHXH (36 triệu)' };
+  if (base > 46_800_000) {
+    return { valid: false, message: 'Vượt quá trần đóng BHXH (46.8 triệu)' };
   }
   
   return { valid: true };

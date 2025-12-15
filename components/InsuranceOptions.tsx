@@ -1,7 +1,7 @@
 'use client';
 
-import { InsuranceOption, RegionId } from '@/types';
-import { REGIONAL_MINIMUM_WAGE } from '@/lib/taxLaws';
+import { InsuranceOption, RegionId, TaxLawId } from '@/types';
+import { getRegionalMinimumWage } from '@/lib/taxLaws';
 import { formatNumber, parseCurrency } from '@/lib/formatters';
 import { Tooltip } from './Tooltip';
 import { EXPLANATIONS } from '@/lib/constants';
@@ -13,6 +13,7 @@ interface InsuranceOptionsProps {
   onRegionChange: (region: RegionId) => void;
   customBase: number;
   onCustomBaseChange: (base: number) => void;
+  taxLawId: TaxLawId;
 }
 
 export function InsuranceOptions({
@@ -22,7 +23,10 @@ export function InsuranceOptions({
   onRegionChange,
   customBase,
   onCustomBaseChange,
+  taxLawId,
 }: InsuranceOptionsProps) {
+  const regionalWages = getRegionalMinimumWage(taxLawId);
+  
   return (
     <div className="space-y-2">
       <label className="flex items-center gap-1.5 text-xs font-semibold text-gray-700">
@@ -52,7 +56,7 @@ export function InsuranceOptions({
           <div className="flex-1">
             <div className="text-sm font-medium text-gray-900">Đóng full trên lương</div>
             <div className="text-xs text-gray-500">
-              Đóng theo lương thực tế (tối đa 36 triệu)
+              Đóng theo lương thực tế (tối đa 46.8 triệu)
             </div>
           </div>
         </label>
@@ -83,7 +87,7 @@ export function InsuranceOptions({
                 onChange={(e) => onRegionChange(e.target.value as RegionId)}
                 className="mt-1.5 w-full px-2 py-1.5 text-xs border border-gray-300 rounded focus:border-primary-500 outline-none"
               >
-                {Object.entries(REGIONAL_MINIMUM_WAGE).map(([key, wage]) => (
+                {Object.entries(regionalWages).map(([key, wage]) => (
                   <option key={key} value={key}>
                     {wage.label}
                   </option>
@@ -111,7 +115,7 @@ export function InsuranceOptions({
           <div className="flex-1">
             <div className="text-sm font-medium text-gray-900">Tự nhập mức</div>
             <div className="text-xs text-gray-500">
-              Nhập mức lương đóng bảo hiểm (tối đa 36 triệu)
+              Nhập mức lương đóng bảo hiểm (tối đa 46.8 triệu)
             </div>
             {option === 'custom' && (
               <input

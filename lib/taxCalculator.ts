@@ -4,8 +4,7 @@ import {
   TaxBracket,
   TaxBreakdownItem,
 } from '@/types';
-import { getTaxLaw } from './taxLaws';
-import { REGIONAL_MINIMUM_WAGE } from './taxLaws';
+import { getTaxLaw, getRegionalMinimumWage } from './taxLaws';
 
 // ============================================
 // TAX CALCULATOR - CORE LOGIC
@@ -137,9 +136,10 @@ function getInsuranceBase(input: CalculationInput): number {
       return Math.min(input.salary, law.insurance.cap);
 
     case 'minimum':
-      // Regional minimum wage
+      // Regional minimum wage (depends on tax law year)
       const region = input.region || 'region1';
-      return REGIONAL_MINIMUM_WAGE[region].value;
+      const regionalWages = getRegionalMinimumWage(input.taxLawId);
+      return regionalWages[region].value;
 
     case 'custom':
       // Custom amount (capped)

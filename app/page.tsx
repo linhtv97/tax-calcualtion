@@ -11,7 +11,8 @@ import { DependentsInput } from '@/components/DependentsInput';
 import { InsuranceOptions } from '@/components/InsuranceOptions';
 import { ResultCard } from '@/components/ResultCard';
 import { TaxBracketTable } from '@/components/TaxBracketTable';
-import { Calculator, Copy, Check } from 'lucide-react';
+import { TaxRatesModal } from '@/components/TaxRatesModal';
+import { Calculator, Copy, Check, FileText } from 'lucide-react';
 import { formatCurrency } from '@/lib/formatters';
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
   const [region, setRegion] = useState<RegionId>(DEFAULT_VALUES.region);
   const [customBase, setCustomBase] = useState<number>(DEFAULT_VALUES.salary);
   const [copied, setCopied] = useState(false);
+  const [showTaxRates, setShowTaxRates] = useState(false);
 
   // Calculate result
   const input: CalculationInput = {
@@ -113,19 +115,31 @@ Thu nhập tính thuế: ${formatCurrency(result.taxableIncome)}
       {/* Header */}
       <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3">
-            <Calculator className="w-8 h-8 text-primary-600" />
-            <div>
-              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
-                Tính Thuế Thu Nhập Cá Nhân
-              </h1>
-              <p className="text-sm text-gray-600">
-                Chuyển đổi Gross ⇄ Net dễ dàng • 100% miễn phí
-              </p>
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3">
+              <Calculator className="w-8 h-8 text-primary-600" />
+              <div>
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+                  Tính Thuế Thu Nhập Cá Nhân
+                </h1>
+                <p className="text-sm text-gray-600">
+                  Chuyển đổi Gross ⇄ Net dễ dàng • 100% miễn phí
+                </p>
+              </div>
             </div>
+            <button
+              onClick={() => setShowTaxRates(true)}
+              className="flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors text-sm"
+            >
+              <FileText className="w-4 h-4" />
+              <span className="hidden sm:inline">Xem biểu thuế</span>
+            </button>
           </div>
         </div>
       </header>
+
+      {/* Tax Rates Modal */}
+      <TaxRatesModal isOpen={showTaxRates} onClose={() => setShowTaxRates(false)} />
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
@@ -152,13 +166,14 @@ Thu nhập tính thuế: ${formatCurrency(result.taxableIncome)}
                 onRegionChange={setRegion}
                 customBase={customBase}
                 onCustomBaseChange={setCustomBase}
+                taxLawId={taxLawId}
               />
             </div>
           </div>
 
           {/* Right Column - Result */}
           <div className="space-y-4">
-            <ResultCard result={result} />
+            <ResultCard result={result} mode={mode} inputSalary={salary} />
 
             {/* Copy Button */}
             <button
