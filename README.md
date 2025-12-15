@@ -1,6 +1,6 @@
 # 🇻🇳 Tính Thuế Thu Nhập Cá Nhân Việt Nam
 
-Công cụ tính thuế TNCN miễn phí, hỗ trợ chuyển đổi 2 chiều Gross ⇄ Net.
+Công cụ tính thuế TNCN miễn phí, hỗ trợ chuyển đổi 2 chiều Gross ⇄ Net
 
 ## ✨ Tính năng
 
